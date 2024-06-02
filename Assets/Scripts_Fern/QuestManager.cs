@@ -14,6 +14,12 @@ public class QuestManager : MonoBehaviour
 
     private WinManager WM;
 
+    public GameObject questSelection;
+    public GameObject questTracker;
+   
+    private bool betweenQuests;
+
+    private float timeBetweenQuests;
     public enum questTypes
     {
         None,
@@ -30,10 +36,24 @@ public class QuestManager : MonoBehaviour
         WM = gameObject.GetComponent<WinManager>();
         questSprite.sprite = currentQuest.questIcon;
         timeLeft = 300;
+        betweenQuests = false;
     }
 
     private void Update()
     {
+        
+        if(timeBetweenQuests > 0)
+        {
+            timeBetweenQuests -= Time.deltaTime;
+        }
+        if(timeBetweenQuests <= 0 && betweenQuests)
+        {
+            betweenQuests = false;
+            questSelection.SetActive(true);
+        }
+
+
+
         if (currentQuest.questIsActive)
         {
             timeLeft -= Time.deltaTime;
@@ -86,4 +106,11 @@ public class QuestManager : MonoBehaviour
         questSprite.sprite = currentQuest.questIcon; //Changes the quest icon. Must be placed after the icon is changed.
     }
 
+
+    public void endQuest()
+    {
+        questTracker.SetActive(false);
+        timeBetweenQuests += 5;
+        betweenQuests = true;
+    }
 }
