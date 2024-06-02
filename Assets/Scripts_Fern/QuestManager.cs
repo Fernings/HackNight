@@ -8,7 +8,6 @@ public class QuestManager : MonoBehaviour
 {
     [SerializeField] Quest currentQuest;
     private float timeLeft;
-    public Image questSprite;
     public TextMeshProUGUI questGoal;
     public TextMeshProUGUI timer;
 
@@ -16,8 +15,6 @@ public class QuestManager : MonoBehaviour
 
     public GameObject questSelection;
     public GameObject questTracker;
-   
-    private bool betweenQuests;
 
     private float timeBetweenQuests;
     public enum questTypes
@@ -33,10 +30,10 @@ public class QuestManager : MonoBehaviour
 
     private void Start()
     {
+        currentQuest.questType = questTypes.None; currentQuestType = questTypes.None;
         WM = gameObject.GetComponent<WinManager>();
-        questSprite.sprite = currentQuest.questIcon;
         timeLeft = 120;
-        betweenQuests = false;
+        currentQuest.questIsActive = false;
     }
 
     private void Update()
@@ -46,14 +43,13 @@ public class QuestManager : MonoBehaviour
         {
             timeBetweenQuests -= (Time.deltaTime * 1.2f );
         }
-        if(timeBetweenQuests <= 0 && betweenQuests)
+        if(timeBetweenQuests <= 0 && !currentQuest.questIsActive)
         {
-            betweenQuests = false;
-            questSelection.SetActive(true);
+            if (!questSelection.activeSelf)
+            {
+                questSelection.SetActive(true);
+            }
         }
-
-
-
         if (currentQuest.questIsActive)
         {
             timeLeft -= Time.deltaTime;
@@ -103,7 +99,6 @@ public class QuestManager : MonoBehaviour
         }
         currentQuest.questIsActive = true;
         timeLeft += 120;
-        questSprite.sprite = currentQuest.questIcon; //Changes the quest icon. Must be placed after the icon is changed.
     }
 
 
@@ -112,6 +107,6 @@ public class QuestManager : MonoBehaviour
         Debug.Log("Quest Ended!");
         questTracker.SetActive(false);
         timeBetweenQuests += 5;
-        betweenQuests = true;
+        currentQuest.questIsActive = false;
     }
 }

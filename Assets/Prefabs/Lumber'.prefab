@@ -247,8 +247,9 @@ GameObject:
   - component: {fileID: 6275879580756147849}
   - component: {fileID: 6943524843563031414}
   - component: {fileID: 9201555984364305637}
+  - component: {fileID: 2147702632738387773}
   m_Layer: 0
-  m_Name: Rock 1
+  m_Name: Lumber'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -367,3 +368,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.6140419, y: 1.3212543}
   m_EdgeRadius: 0
+--- !u!114 &2147702632738387773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8929055609552425266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f9d707c136cb7646955a4147eb0f7d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quest: {fileID: 11400000, guid: 23240617f06e12f43b15e0cac858023e, type: 2}
+  questManager: {fileID: 0}
