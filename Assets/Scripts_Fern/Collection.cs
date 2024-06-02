@@ -16,11 +16,11 @@ public class Collection : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && canPickUp)
         {
-            if (this.tag.Equals("Tree"))
+            if (tag.Equals("Tree"))
             {
                 if (int.Parse(inventory.axeNum.text) != 0)
                 {
-                    inventory.GiveItem(this.tag, 1);
+                    inventory.GiveItem(tag, 1);
                     Destroy(this.gameObject);
                 }
             }else if (this.tag.Equals("Timmy"))
@@ -40,7 +40,7 @@ public class Collection : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (this.tag.Equals("Tree"))
+        if (tag.Equals("Tree"))
         {
             if (int.Parse(inventory.axeNum.text) != 0)
             {

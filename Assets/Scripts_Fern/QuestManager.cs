@@ -35,7 +35,7 @@ public class QuestManager : MonoBehaviour
     {
         WM = gameObject.GetComponent<WinManager>();
         questSprite.sprite = currentQuest.questIcon;
-        timeLeft = 300;
+        timeLeft = 120;
         betweenQuests = false;
     }
 
@@ -44,7 +44,7 @@ public class QuestManager : MonoBehaviour
         
         if(timeBetweenQuests > 0)
         {
-            timeBetweenQuests -= Time.deltaTime;
+            timeBetweenQuests -= (Time.deltaTime * 1.2f );
         }
         if(timeBetweenQuests <= 0 && betweenQuests)
         {

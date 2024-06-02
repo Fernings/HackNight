@@ -25,7 +25,7 @@ public class InventoryManager : MonoBehaviour
             case "Rock":
                 rockNum.text = (amount + int.Parse(rockNum.text)).ToString();
                 break;
-            case "Wood":
+            case "Tree":
                 woodNum.text = (amount + int.Parse(woodNum.text)).ToString();
                 break;
             case "Letter":
