@@ -2,23 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Collection : MonoBehaviour
+public class Collect : MonoBehaviour
 {
     private bool canPickUp;
-    private GameObject inventoryObject;
-    private InventoryManager inventory;
-    private void Awake()
+    public InventoryManager inventory;
+    private void Start()
     {
         canPickUp = false;
-        inventoryObject = GameObject.FindGameObjectWithTag("Inventory");
-        inventory = inventoryObject.GetComponent<InventoryManager>();
-
+        inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryManager>();
     }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && canPickUp)
         {
-            Debug.Log(inventory.gameObject.name);
             if (this.name.Equals("Tree"))
             {
                 if (int.Parse(inventory.axeNum.text) != 0)
