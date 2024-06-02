@@ -11,6 +11,9 @@ public class QuestManager : MonoBehaviour
     public Image questSprite;
     public TextMeshProUGUI questGoal;
     public TextMeshProUGUI timer;
+
+    private WinManager WM;
+
     public enum questTypes
     {
         None,
@@ -24,6 +27,7 @@ public class QuestManager : MonoBehaviour
 
     private void Start()
     {
+        WM = gameObject.GetComponent<WinManager>();
         questSprite.sprite = currentQuest.questIcon;
         timeLeft = 300;
     }
@@ -37,7 +41,7 @@ public class QuestManager : MonoBehaviour
         }
         if(timeLeft <= 0)
         {
-            //playerTwoWins();
+            WM.Player2Win();
         }
         timer.text = (((int)timeLeft)).ToString();
 
