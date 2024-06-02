@@ -10,13 +10,16 @@ public class Grandma : MonoBehaviour
     private bool canPickUp;
     bool isGrandmaWaiting;
     private float grandmaTimer;
-    
 
+
+
+    private Transform child;
     private void Awake()
     {
         inventory = GameObject.FindGameObjectWithTag("A").GetComponent<InventoryManager>();
         canPickUp = false;
         grandmaTimer = 20f;
+        child = transform.GetChild(0);
     }
     private void Update()
     {
@@ -26,7 +29,11 @@ public class Grandma : MonoBehaviour
         }
         if(grandmaTimer <= 0)
         {
+            child.GetChild(0).gameObject.SetActive(false);
+            child.GetChild(1).gameObject.SetActive(false);
+            child.GetChild(2).gameObject.SetActive(false);
             questManager.endQuest();
+            grandmaTimer = 20;
         }
         if (Input.GetKeyDown(KeyCode.E) && canPickUp)
         {
@@ -55,7 +62,7 @@ public class Grandma : MonoBehaviour
         {
             if(quest.questType == QuestManager.questTypes.Grandma)
             {
-                this.transform.GetChild(0).GetChild(1).gameObject.SetActive(true);
+                child.GetChild(1).gameObject.SetActive(true);
                 canPickUp = true;
             }
 
@@ -63,7 +70,7 @@ public class Grandma : MonoBehaviour
             {
                 if(int.Parse(inventory.letterNum.text) > 0)
                 {
-                    this.transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
+                    child.GetChild(0).gameObject.SetActive(true);
                     canPickUp = true;
                 }
             }
@@ -71,8 +78,8 @@ public class Grandma : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        this.transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
-        this.transform.GetChild(0).GetChild(1).gameObject.SetActive(false);
+        child.GetChild(0).gameObject.SetActive(false);
+        child.GetChild(1).gameObject.SetActive(false);
         canPickUp = false;
         isGrandmaWaiting = false;
     }

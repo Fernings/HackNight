@@ -38,30 +38,12 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void RemoveItem(string itemName, int amount)
-    {
-
-    }
-
-    public void HasItem(string itemName)
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            if (InventoryUI.activeSelf == true)
-            {
-                InventoryUI.SetActive(false);
-            }
-            else if (InventoryUI.activeSelf == false)
-            {
-                InventoryUI.SetActive(true);
-            }
-
+            InventoryUI.SetActive(!InventoryUI.activeSelf);
         }
     }
 }

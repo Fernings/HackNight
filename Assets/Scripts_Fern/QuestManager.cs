@@ -109,6 +109,7 @@ public class QuestManager : MonoBehaviour
 
     public void endQuest()
     {
+        Debug.Log("Quest Ended!");
         questTracker.SetActive(false);
         timeBetweenQuests += 5;
         betweenQuests = true;
