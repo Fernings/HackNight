@@ -6,31 +6,40 @@ public class Collection : MonoBehaviour
 {
     private bool canPickUp;
     private InventoryManager inventory;
+    private QuestManager questManager;
     private void Awake()
     {
         canPickUp = false;
         inventory = GameObject.FindGameObjectWithTag("A").GetComponent<InventoryManager>();
-
+        questManager = GameObject.FindGameObjectWithTag("QMan").GetComponent<QuestManager>();
+        questManager.currentQuest.itemToCollect = "Null";
+        questManager.currentQuestType = QuestManager.questTypes.Collection;
     }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && canPickUp)
         {
+            if (questManager.currentQuestType == QuestManager.questTypes.Collection && questManager.currentQuest.itemToCollect.Equals(tag))
+            {
+                questManager.endQuest();
+                Destroy(gameObject);
+                return;
+            }
             if (tag.Equals("Tree"))
             {
                 if (int.Parse(inventory.axeNum.text) != 0)
                 {
                     inventory.GiveItem(tag, 1);
-                    Destroy(this.gameObject);
+                    Destroy(gameObject);
                 }
-            }else if (this.tag.Equals("Timmy"))
+            }else if (tag.Equals("Bippy"))
             {
-                if (int.Parse(inventory.axeNum.text) == 0)
+                if (int.Parse(inventory.letterNum.text) < 1)
                 {
-                    inventory.GiveItem(this.tag, 1);
+                    inventory.GiveItem(tag, 1);
                 }
             }
-            else
+            else if (tag.Equals("Rock") || tag.Equals("Axe"))
             {
                 inventory.GiveItem(this.tag, 1);
                 Destroy(this.gameObject);
@@ -40,6 +49,7 @@ public class Collection : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.tag != "Player") return;
         if (tag.Equals("Tree"))
         {
             if (int.Parse(inventory.axeNum.text) != 0)
@@ -47,9 +57,10 @@ public class Collection : MonoBehaviour
                 this.transform.GetChild(0).gameObject.SetActive(true);
                 canPickUp = true;
             }
-        } else if (this.tag.Equals("Timmy") )
+        } else if (tag.Equals("Bippy") )
         {
-            if (inventory.letterNum.Equals("0"))
+            Debug.LogWarning("Bippy");
+            if (int.Parse(inventory.letterNum.text) != 1)
             {
                 this.transform.GetChild(0).gameObject.SetActive(true);
                 canPickUp = true;
@@ -67,4 +78,5 @@ public class Collection : MonoBehaviour
         this.transform.GetChild(0).gameObject.SetActive(false);
         canPickUp = false;
     }
+
 }

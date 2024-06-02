@@ -10,6 +10,12 @@ TagManager:
   - Rock
   - Tree
   - Axe
+  - goomber
+  - QMan
+  - Dent
+  - Key
+  - Paste
+  - Bippy
   layers:
   - Default
   - TransparentFX
@@ -17,8 +23,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - goomber
+  - player
   - 
   - 
   - 

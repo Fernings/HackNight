@@ -5,8 +5,13 @@ using UnityEngine;
 public class GoomberHit : MonoBehaviour
 {
     public goomber mainscript;
+    private QuestManager questManager;
     public string type;
     public float knockback = 100;
+    private void Awake()
+    {
+        questManager = GameObject.FindGameObjectWithTag("QMan").GetComponent<QuestManager>();
+    }
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -19,7 +24,9 @@ public class GoomberHit : MonoBehaviour
 
             if (type == "right" || type == "left")
             {
-                //damage player
+
+                questManager.timeLeft -= 10f;
+
                 Rigidbody2D playerRB = collision.gameObject.GetComponent<Rigidbody2D>();
 
                 if (type == "left")
@@ -30,6 +37,8 @@ public class GoomberHit : MonoBehaviour
                 {
                     playerRB.AddForce(Vector2.right * knockback);
                 }
+
+
             }
         }
 

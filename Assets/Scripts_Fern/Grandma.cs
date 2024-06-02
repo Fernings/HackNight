@@ -49,7 +49,6 @@ public class Grandma : MonoBehaviour
             {
                 canPickUp = false;
                 inventory.letterNum.text = "0";
-                quest.questIsActive = false;
                 questManager.endQuest();
             }
         }

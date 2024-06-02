@@ -31,7 +31,8 @@ public class LumberMan : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(quest.questType == QuestManager.questTypes.Tree && int.Parse(inventory.woodNum.text) >= 5)
+        if (collision.tag != "Player") return;
+        if (quest.questType == QuestManager.questTypes.Tree && int.Parse(inventory.woodNum.text) >= 5)
         {
             child.gameObject.SetActive(true);
             canTurnIn = true;

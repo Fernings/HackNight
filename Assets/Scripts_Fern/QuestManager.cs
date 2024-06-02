@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class QuestManager : MonoBehaviour
 {
-    [SerializeField] Quest currentQuest;
-    private float timeLeft;
+    public Quest currentQuest;
+    public float timeLeft;
     public TextMeshProUGUI questGoal;
     public TextMeshProUGUI timer;
 
@@ -15,6 +15,7 @@ public class QuestManager : MonoBehaviour
 
     public GameObject questSelection;
     public GameObject questTracker;
+    private int numQuestsCompleted;
 
     private float timeBetweenQuests;
     public enum questTypes
@@ -23,7 +24,8 @@ public class QuestManager : MonoBehaviour
         Delivery,
         Grandma,
         Rock,
-        Tree
+        Tree,
+        Collection
     };
 
     public questTypes currentQuestType = questTypes.None;
@@ -33,6 +35,7 @@ public class QuestManager : MonoBehaviour
         currentQuest.questType = questTypes.None; currentQuestType = questTypes.None;
         WM = gameObject.GetComponent<WinManager>();
         timeLeft = 120;
+        numQuestsCompleted = 0;
         currentQuest.questIsActive = false;
     }
 
@@ -56,13 +59,19 @@ public class QuestManager : MonoBehaviour
         }
         if(timeLeft <= 0)
         {
-            WM.EndGame("Player 1", "Time ran out.");
+            WM.EndGame("Player 2 ", "Time ran out.");
         }
         timer.text = (((int)timeLeft)).ToString();
-
+        if(numQuestsCompleted >= 7)
+        {
+            WM.EndGame("Player 1 ", "Player 1 Completed All Side Quests (Maybe the real main quest was the side quests we made along the way)");
+        }
     }
 
-
+    public void setName(string str)
+    {
+        currentQuest.itemToCollect = str;
+    }
     public void startQuest(string questName)
     {
 
@@ -83,22 +92,24 @@ public class QuestManager : MonoBehaviour
             case "Rock":
                 currentQuestType = questTypes.Rock; currentQuest.questType = questTypes.Rock;
                 questGoal.text = "Feed \"THE GOBBLER\" 10 Rocks";
-                currentQuest.itemToCollect = "Rock";
                 
                 break;
             case "Tree":
                 currentQuestType = questTypes.Tree; currentQuest.questType = questTypes.Tree;
                 questGoal.text = "Give 5 wood to the Lumberjack";
-                currentQuest.itemToCollect = "Wood";
-                
                 break;
+            case "Collection":
+                currentQuestType = questTypes.Collection; currentQuest.questType = questTypes.Collection;
+                questGoal.text = "Collect a : " + currentQuest.itemToCollect;
+                break;
+
             default:
                 currentQuestType = questTypes.None; currentQuest.questType = questTypes.None;
                 questGoal.text = "";
                 return;
         }
         currentQuest.questIsActive = true;
-        timeLeft += 120;
+        timeLeft += 50;
     }
 
 
