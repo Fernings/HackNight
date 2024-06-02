@@ -40,7 +40,7 @@ public class QuestManager : MonoBehaviour
         }
         if(timeLeft <= 0)
         {
-            WM.Player2Win();
+            WM.EndGame("Player 1", "Time ran out.");
         }
         timer.text = (((int)timeLeft)).ToString();
 
