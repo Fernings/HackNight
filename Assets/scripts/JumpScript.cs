@@ -5,11 +5,12 @@ using UnityEngine;
 public class JumpScript : MonoBehaviour
 {
     public KeyCode JumpKey;
+    public KeyCode JumpKey2;
     public float BaseGravity;
     public float Fallgravity;
     public Rigidbody2D rb;
     public float jumpForce;
-
+    
     public bool grounded;
     public Detectors GroundedDetector;
 
@@ -29,6 +30,12 @@ public class JumpScript : MonoBehaviour
         {
             StartJump();
         }
+
+        if (Input.GetKeyDown(JumpKey2) && grounded)
+        {
+            StartJump();
+        }
+
         if (Input.GetKeyUp(JumpKey))
         {
             EndJump();
