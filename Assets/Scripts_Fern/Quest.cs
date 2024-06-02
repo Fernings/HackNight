@@ -10,7 +10,7 @@ public class Quest : ScriptableObject
     public int itemQuantityToCollect;
     public string itemToCollect; //This can be: "Rock", 
 
-    public string questType; // This can be : "Delivery", "Rock", "Grandma", "Tree", 
+    public QuestManager.questTypes questType; // This can be : "Delivery", "Rock", "Grandma", "Tree", 
     public Sprite questIcon;
 
 }

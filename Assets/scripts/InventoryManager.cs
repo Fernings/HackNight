@@ -12,17 +12,17 @@ public class InventoryManager : MonoBehaviour
         InventoryUI.SetActive(false);
     }
 
-    public void GiveItem(itemName, amount)
+    public void GiveItem(string itemName, int amount)
     {
         
     }
 
-    public void RemoveItem(itemName, amount)
+    public void RemoveItem(string itemName, int amount)
     {
         
     }
 
-    public void HasItem(itemName)
+    public void HasItem(string itemName)
     {
         
     }
