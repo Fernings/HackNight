@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8944538894946643958}
   - component: {fileID: 9135525185813401790}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Sprite2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -240,7 +240,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7274711914064869855}
   - component: {fileID: 7776537597746451132}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Sprite1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -328,7 +328,7 @@ GameObject:
   - component: {fileID: 3303475494810078119}
   - component: {fileID: 1726576045716231611}
   - component: {fileID: 7296115586867068036}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Goomber
   m_TagString: goomber
   m_Icon: {fileID: 0}
@@ -673,7 +673,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2508214454369799174}
   - component: {fileID: 5221748308266522129}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Sprite3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -757,7 +757,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7594804678048639465}
   - component: {fileID: 3597646112324368456}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Sprite0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
