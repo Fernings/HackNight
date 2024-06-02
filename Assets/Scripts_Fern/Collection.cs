@@ -16,17 +16,17 @@ public class Collection : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && canPickUp)
         {
-            if (this.name.Equals("Tree"))
+            if (this.tag.Equals("Tree"))
             {
                 if (int.Parse(inventory.axeNum.text) != 0)
                 {
-                    inventory.GiveItem(this.name, 1);
+                    inventory.GiveItem(this.tag, 1);
                     Destroy(this.gameObject);
                 }
             }
             else
             {
-                inventory.GiveItem(this.name, 1);
+                inventory.GiveItem(this.tag, 1);
                 Destroy(this.gameObject);
             }
 
@@ -34,8 +34,19 @@ public class Collection : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        this.transform.GetChild(0).gameObject.SetActive(true);
-        canPickUp = true;
+        if (this.tag.Equals("Tree"))
+        {
+            if (int.Parse(inventory.axeNum.text) != 0)
+            {
+                this.transform.GetChild(0).gameObject.SetActive(true);
+                canPickUp = true;
+            }
+        }
+        else {
+            this.transform.GetChild(0).gameObject.SetActive(true);
+            canPickUp = true;
+        }
+
     }
     private void OnTriggerExit2D(Collider2D collision)
     {

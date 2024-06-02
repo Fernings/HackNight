@@ -19,6 +19,7 @@ public class InventoryManager : MonoBehaviour
 
     public void GiveItem(string itemName, int amount)
     {
+        Debug.Log(itemName);
         switch (itemName)
         {
             case "Rock":
