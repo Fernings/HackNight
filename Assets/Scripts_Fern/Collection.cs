@@ -9,13 +9,25 @@ public class Collection : MonoBehaviour
     private void Start()
     {
         canPickUp = false;
+        inventory = GameObject.FindGameObjectWithTag("Inventory").GetComponent<InventoryManager>();
     }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && canPickUp)
         {
-            inventory.GiveItem(this.name, 1);
-            Destroy(this.gameObject);
+            if (this.name.Equals("Tree")  )
+            {
+                 if(int.Parse(inventory.axeNum.text) != 0)
+                {
+                    inventory.GiveItem(this.name, 1);
+                    Destroy(this.gameObject);
+                }
+            }
+            else {
+                inventory.GiveItem(this.name, 1);
+                Destroy(this.gameObject);
+            }
+
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
