@@ -34,7 +34,6 @@ public class QuestManager : MonoBehaviour
 
     private void Update()
     {
-        timeLeft -= Time.deltaTime;
         if (currentQuest.questIsActive)
         {
             timeLeft -= Time.deltaTime;
