@@ -6,8 +6,6 @@ using UnityEngine.UI;
 public class Quest : ScriptableObject
 {
     public bool questIsActive;
-    
-    public int itemQuantityToCollect;
     public string itemToCollect; //This can be: "Rock", 
 
     public QuestManager.questTypes questType; // This can be : "Delivery", "Rock", "Grandma", "Tree", 

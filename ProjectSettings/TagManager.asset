@@ -7,6 +7,8 @@ TagManager:
   - Floor
   - Inventory
   - A
+  - Rock
+  - Tree
   layers:
   - Default
   - TransparentFX

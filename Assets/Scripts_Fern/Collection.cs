@@ -23,6 +23,12 @@ public class Collection : MonoBehaviour
                     inventory.GiveItem(this.tag, 1);
                     Destroy(this.gameObject);
                 }
+            }else if (this.tag.Equals("Timmy"))
+            {
+                if (int.Parse(inventory.axeNum.text) == 0)
+                {
+                    inventory.GiveItem(this.tag, 1);
+                }
             }
             else
             {
@@ -41,6 +47,14 @@ public class Collection : MonoBehaviour
                 this.transform.GetChild(0).gameObject.SetActive(true);
                 canPickUp = true;
             }
+        } else if (this.tag.Equals("Timmy") )
+        {
+            if (inventory.letterNum.Equals("0"))
+            {
+                this.transform.GetChild(0).gameObject.SetActive(true);
+                canPickUp = true;
+            }
+
         }
         else {
             this.transform.GetChild(0).gameObject.SetActive(true);
