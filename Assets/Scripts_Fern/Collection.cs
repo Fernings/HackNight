@@ -5,20 +5,17 @@ using UnityEngine;
 public class Collection : MonoBehaviour
 {
     private bool canPickUp;
-    private GameObject inventoryObject;
     private InventoryManager inventory;
     private void Awake()
     {
         canPickUp = false;
-        inventoryObject = GameObject.FindGameObjectWithTag("Inventory");
-        inventory = inventoryObject.GetComponent<InventoryManager>();
+        inventory = GameObject.FindGameObjectWithTag("A").GetComponent<InventoryManager>();
 
     }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && canPickUp)
         {
-            Debug.Log(inventory.gameObject.name);
             if (this.name.Equals("Tree"))
             {
                 if (int.Parse(inventory.axeNum.text) != 0)
