@@ -30,7 +30,6 @@ public class QuestManager : MonoBehaviour
 
     private void Update()
     {
-        timeLeft -= Time.deltaTime;
         if (currentQuest.questIsActive)
         {
             timeLeft -= Time.deltaTime;
@@ -79,7 +78,7 @@ public class QuestManager : MonoBehaviour
                 return;
         }
         currentQuest.questIsActive = true;
-        timeLeft += 120;
+        timeLeft = 120;
         questSprite.sprite = currentQuest.questIcon; //Changes the quest icon. Must be placed after the icon is changed.
     }
 
